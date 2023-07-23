@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-           
+            $table->string('role')->default(0);
             $table->timestamps();
         });
     }
