@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StaffController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,4 +29,7 @@ Route::middleware([
 
     Route::get('/users', [UserController::class, 'index'])->name('index_users');
 
+
+    Route::get('/staff', [StaffController::class, 'index'])->name('index_staff');
+    Route::post('/staff/add', [StaffController::class, 'create'])->name('staff_add');
 });
