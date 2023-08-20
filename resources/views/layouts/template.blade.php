@@ -126,8 +126,55 @@
 
             @endif
             <!-- User interface -->
-      
+
+         <li class="menu-header high text-uppercase"><span class="menu-header-text">ข้อมูลรถ</span> </li>
           
+         @if (request()->routeIs('index_car'))
+            <!-- Cards -->
+            <li class="menu-item active">
+              <a href="{{route('index_car')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">รถ</div>
+              </a>
+            </li>
+
+            @else
+            <li class="menu-item ">
+              <a href="{{route('index_car')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">รถ</div>
+              </a>
+            </li>
+
+            @endif
+
+            <li class="menu-header high text-uppercase"><span class="menu-header-text">การจอง - คืนรถ</span> </li>
+          
+         @if (request()->routeIs('index_bookings'))
+            <!-- Cards -->
+            <li class="menu-item active">
+              <a href="{{route('index_bookings')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">จองรถ</div>
+              </a>
+            </li>
+
+            @else
+            <li class="menu-item ">
+              <a href="{{route('index_bookings')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">จองรถ</div>
+              </a>
+            </li>
+
+            @endif
+
+
+
+
+
+
+
           </ul>
 
           <div class="sidenav-footer mx-3 ">

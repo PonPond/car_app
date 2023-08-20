@@ -32,6 +32,51 @@ return new class extends Migration
             $table->string('password');
             $table->timestamps();
         });
+
+        Schema::create('user_profiles', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('password');
+                $table->string('tel');
+                $table->timestamps();
+        });
+
+        Schema::create('cars', function (Blueprint $table) {
+            $table->id();
+            $table->string('brand');
+            $table->string('detail');
+            $table->string('number_car')->unique();
+            $table->string('power_system')->nullable();
+            $table->string('battery')->nullable();
+            $table->string('electric_motor')->nullable();
+            $table->string('steering')->nullable();
+            $table->string('car_system')->nullable();
+            $table->string('anti_system')->nullable();
+            $table->string('price');
+            $table->string('mm')->nullable();
+            $table->string('img1')->nullable();
+            $table->string('img2')->nullable();
+            $table->string('img3')->nullable();
+            $table->timestamps();
+    });
+
+    Schema::create('bookings', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('users_id');
+        $table->unsignedBigInteger('cars_id');
+        $table->string('start');
+        $table->string('end');
+        $table->string('all_price');
+        $table->string('number_id_img');
+        $table->string('car_id_img');
+        $table->string('slip_id_img');
+        $table->string('status')->default(0);
+        $table->foreign('users_id')->references('id')->on('user_profiles');
+        $table->foreign('cars_id')->references('id')->on('cars');
+        $table->timestamps();
+    });
+        
     }
 
     /**
@@ -39,7 +84,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('user_profiles');
         Schema::dropIfExists('users');
         Schema::dropIfExists('staff');
+        Schema::dropIfExists('cars');
+        Schema::dropIfExists('bookings');
     }
 };

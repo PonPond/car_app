@@ -78,14 +78,43 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $request->validate([
+            
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'tel' => 'required',
+            'password' => 'required',
+        ],
+            [
+                
+                'first_name.required' => "กรุณากรอกชื่อ",
+                'last_name.required' => "กรุณากรอกนามสกุล",
+                'tel.required' => "กรุณากรอกเบอร์โทร",
+                'password.required' => "กรุณากรอกรหัสผ่าน",
+            ],
+
+        );
+
+        Staff::find($id)->update([
+      
+        'first_name' => $request->first_name,
+        'last_name' => $request->last_name,
+        'tel' => $request->tel,
+        'password' => $request->password,
+
+        ]);
+
+        return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $delete = Staff::find($id)->delete();
+        return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+
     }
 }
