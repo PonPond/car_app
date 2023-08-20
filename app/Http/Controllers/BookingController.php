@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use App\Models\Car;
+use App\Models\UserProfile;
 class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $car = Car::all();
+        $users = UserProfile::all();
         $bookings = Booking::paginate(15);
-        return view('page.bookings.index', compact('bookings'));
+        return view('page.bookings.index', compact('bookings','car','users'));
     }
 
     /**
