@@ -71,12 +71,13 @@ return new class extends Migration
         $table->string('number_id_img');
         $table->string('car_id_img');
         $table->string('slip_id_img');
+        $table->string('date');
         $table->string('status')->default(0);
         $table->foreign('users_id')->references('id')->on('user_profiles');
         $table->foreign('cars_id')->references('id')->on('cars');
         $table->timestamps();
     });
-        
+
     }
 
     /**

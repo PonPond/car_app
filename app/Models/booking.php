@@ -19,10 +19,21 @@ class Booking extends Model
         'slip_id_img',
         'car_system',
         'anti_system',
+        'date',
         'mm',
         'img1',
         'img2',
         'img3',
     ];
+
+    public function bookingtocars()
+    {
+        return $this->hasMany(Car::class, 'id', 'cars_id');
+    }
+
+    public function bookingtouser()
+    {
+        return $this->hasMany(UserProfile::class, 'id', 'users_id');
+    }
 }
 

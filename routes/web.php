@@ -46,6 +46,6 @@ Route::middleware([
     Route::post('car/update/{id}', [CarController::class, 'update']);
 
     Route::get('/bookings', [BookingController::class, 'index'])->name('index_bookings');
-   
+    Route::post('/bookings/add', [BookingController::class, 'create'])->name('bookings_add');
 
 });

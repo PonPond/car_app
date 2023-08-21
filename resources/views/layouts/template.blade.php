@@ -61,7 +61,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-          
+
           </div>
 
           <div class="menu-inner-shadow"></div>
@@ -85,7 +85,7 @@
               </a>
             </li>
  @endif
-      
+
             @if (request()->routeIs('index_users'))
             <!-- Cards -->
             <li class="menu-item active">
@@ -128,7 +128,7 @@
             <!-- User interface -->
 
          <li class="menu-header high text-uppercase"><span class="menu-header-text">ข้อมูลรถ</span> </li>
-          
+
          @if (request()->routeIs('index_car'))
             <!-- Cards -->
             <li class="menu-item active">
@@ -149,7 +149,7 @@
             @endif
 
             <li class="menu-header high text-uppercase"><span class="menu-header-text">การจอง - คืนรถ</span> </li>
-          
+
          @if (request()->routeIs('index_bookings'))
             <!-- Cards -->
             <li class="menu-item active">
@@ -218,12 +218,12 @@
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
               <div class="navbar-nav align-items-center">
-              
+
               </div>
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-           
+
                 <!--/ User -->
               </ul>
             </div>
@@ -241,15 +241,15 @@
 
               @include('include.content')
               </div>
-            
-              
-                 
-                  
-                    
+
+
+
+
+
             <!-- / Content -->
 
             <!-- Footer -->
-          
+
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -264,7 +264,7 @@
     </div>
     <!-- / Layout wrapper -->
 
-  
+
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
