@@ -28,7 +28,7 @@ class CarController extends Controller
             'brand' => 'required',
             'detail' => 'required',
             'price' => 'required',
-          
+
         ],
             [
                 'number_car.unique' => "ทะเบียนรถ ซ้ำ",
@@ -81,11 +81,11 @@ class CarController extends Controller
     public function edit(string $id)
     {
 
-     
 
-     
 
-     
+
+
+
     }
 
     /**
@@ -95,27 +95,27 @@ class CarController extends Controller
     {
 
 
-       
-     
+
+
         $request->validate([
             'number_car' => 'required',
             'brand' => 'required',
             'detail' => 'required',
-          
+
         ],
             [
                 'number_car.unique' => "ทะเบียนรถ ซ้ำ",
                 'brand.required' => "กรุณากรอกยี่ห่อ",
                 'detail.required' => "กรุณากรอกรายละเอียด",
-            
+
             ],
 
         );
-      
+
 
         Car::find($id)->update([
-      
-         
+
+
            'brand' => $request->brand,
           'detail' => $request->detail,
            'number_car' => $request->number_car,
@@ -130,7 +130,7 @@ class CarController extends Controller
            'img1' => $request->img1,
            'img2' => $request->img2,
            'img3' => $request->img3,
-  
+
 
         ]);
 
@@ -140,8 +140,10 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $delete = Car::find($id)->delete();
+        return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+
     }
 }

@@ -24,8 +24,10 @@
                 <div class="alert alert-danger" role="alert">ลบข้อมูลเรียบร้อย</div>
                 @endif
 
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">ไม่สามารถลบข้อมูลได้ เนื่องจากรถมีการทำรายการเช่า</div>
+    @endif
 
-                    
                         <!-- Modal -->
                         <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -38,7 +40,7 @@
                                   data-bs-dismiss="modal"
                                   aria-label="Close"
                                 ></button>
-                           
+
                               </div>
                               <div class="modal-body">
                               <form action="{{ route('car_add') }}" method="post">
@@ -52,7 +54,7 @@
                                     <label for="nameBasic" class="form-label">รายละเอียด</label>
                                     <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" />
                                   </div>
-                               
+
                                 </div>
                                 <br>
                                 <div class="row ">
@@ -71,7 +73,7 @@
                                     <input type="text"  name="power_system" class="form-control" placeholder="V231" />
                                   </div>
                                 </div>
-                           
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
@@ -88,7 +90,7 @@
                                     <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า" />
                                   </div>
                                 </div>
-                               
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">ระบบรถ</label>
@@ -105,7 +107,7 @@
                                     <input type="text"  name="price" class="form-control" placeholder="500" />
                                   </div>
 
-                               
+
                                 </div>
 
                                 <div class="row ">
@@ -124,7 +126,7 @@
                                     <input type="text"  name="img3" class="form-control" placeholder="Link" />
                                   </div>
 
-                               
+
                                 </div>
 
                               <div class="modal-footer">
@@ -138,8 +140,8 @@
                           </div>
                         </div>
                         </div>
-                     
-              
+
+
                         <div class="card">
                 <h5 class="card-header">ข้อมูลพนักงาน</h5>
                 <div class="table-responsive text-nowrap">
@@ -150,30 +152,30 @@
                         <th  style="text-align:center;">ยี่ห่อ - รุ่น</th>
                         <th style="text-align:center;">ทะเบียนรถ</th>
                         <th style="text-align:center;">ราคาเช่าต่อวัน</th>
-                        
+
                         <th style="text-align:center;">รายละเอียด</th>
                         <th style="text-align:center;">รูปภาพ</th>
                         <th style="text-align:center;">จัดการ</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        
+
                     @php
                     $i=1;
                     @endphp
-                 
+
                     @foreach ($car as $item)
                       <tr>
-                    
+
                         <td>{{$i++}}</td>
                         <td  style="text-align:center;">{{$item->brand}}</td>
                         <td style="text-align:center;">{{$item->number_car}}</td>
                         <td style="text-align:center;">{{$item->price}} บาท</td>
-                        
+
                         <td style="text-align:center;">{{$item->detail}}</td>
                         <td style="text-align:center;"> <img src="{{$item->img1}}" alt="Chevrolet Corvette Stingray" style="width: 200px; height: 100px;"> </td>
                         <td  style="text-align:center;">
-                       
+
                         <button
                           type="button"
                           class="btn btn-success"
@@ -191,9 +193,9 @@
                         >
                           แก้ไข
                         </button>
-                        <a href="#"class="btn btn-danger"
-                           onclick="return confirm('ลบหรือไม่ ?')"> ลบข้อมูล</a> 
-                        <!-- Modal -->
+                            <a href="{{ url('/car/delete/' . $item->id) }}"class="btn btn-danger"
+                               onclick="return confirm('ลบหรือไม่ ?')"> ลบข้อมูล</a>
+                            <!-- Modal -->
                         <div class="modal fade" id="basicModal1{{$item->id}}" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -205,12 +207,12 @@
                                   data-bs-dismiss="modal"
                                   aria-label="Close"
                                 ></button>
-                             
+
                               </div>
                               <div class="modal-body">
                                 <form action="{{ url('/car/update/' . $item->id) }}"
                                 method="post">
-                                @csrf       
+                                @csrf
 
                                 <div class="row">
                                   <div class="col-6 mb-6">
@@ -221,7 +223,7 @@
                                     <label for="nameBasic" class="form-label">รายละเอียด</label>
                                     <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" value="{{$item->detail}}"/>
                                   </div>
-                               
+
                                 </div>
                                 <br>
                                 <div class="row ">
@@ -240,7 +242,7 @@
                                     <input type="text"  name="power_system" class="form-control" placeholder="V231"  value="{{$item->power_system}}"/>
                                   </div>
                                 </div>
-                           
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
@@ -257,7 +259,7 @@
                                     <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า"  value="{{$item->steering}}"/>
                                   </div>
                                 </div>
-                               
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">ระบบรถ</label>
@@ -274,7 +276,7 @@
                                     <input type="text"  name="price" class="form-control" placeholder="500" />
                                   </div>
 
-                               
+
                                 </div>
 
                                 <div class="row ">
@@ -299,7 +301,7 @@
                                     <img src="{{$item->img3}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
                                   </div>
 
-                               
+
                                 </div>
 
                               <div class="modal-footer">
@@ -310,7 +312,7 @@
                               </div>
                               </form>
                             </div>
-                             
+
                             </div>
                           </div>
                         </div>
@@ -326,12 +328,12 @@
                                   data-bs-dismiss="modal"
                                   aria-label="Close"
                                 ></button>
-                             
+
                               </div>
                               <div class="modal-body">
                                 <form action="{{ url('/car/update/' . $item->id) }}"
                                 method="post">
-                                @csrf       
+                                @csrf
 
                                 <div class="row">
                                   <div class="col-6 mb-6">
@@ -342,7 +344,7 @@
                                     <label for="nameBasic" class="form-label">รายละเอียด</label>
                                     <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" value="{{$item->detail}}" disabled/>
                                   </div>
-                               
+
                                 </div>
                                 <br>
                                 <div class="row ">
@@ -361,7 +363,7 @@
                                     <input type="text"  name="power_system" class="form-control" placeholder="V231"  value="{{$item->power_system}}" disabled/>
                                   </div>
                                 </div>
-                           
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
@@ -378,7 +380,7 @@
                                     <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า"  value="{{$item->steering}}" disabled/>
                                   </div>
                                 </div>
-                               
+
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">ระบบรถ</label>
@@ -395,7 +397,7 @@
                                     <input type="text"  name="price" class="form-control" value="{{$item->price}}" disabled />
                                   </div>
 
-                               
+
                                 </div>
 
                                 <div class="row ">
@@ -420,18 +422,18 @@
                                     <img src="{{$item->img3}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
                                   </div>
 
-                               
+
                                 </div>
 
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                   ปิด
                                 </button>
-                               
+
                               </div>
                               </form>
                             </div>
-                             
+
                             </div>
                           </div>
                         </div>
@@ -442,7 +444,7 @@
                   </table>
                 </div>
               </div>
-    
+
               </div>
-              
+
 @endsection

@@ -99,14 +99,32 @@ class BookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+
+
+        ],
+            [
+                'status.unique' => "กรุณากรอกสถานะ",
+            ],
+
+        );
+
+
+        Booking::find($id)->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $delete = Booking::find($id)->delete();
+        return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+
     }
 }

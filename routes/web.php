@@ -44,8 +44,12 @@ Route::middleware([
     Route::get('/car', [CarController::class, 'index'])->name('index_car');
     Route::post('/car/add', [CarController::class, 'create'])->name('car_add');
     Route::post('car/update/{id}', [CarController::class, 'update']);
+    Route::get('/car/delete/{id}', [CarController::class, 'delete']);
+
 
     Route::get('/bookings', [BookingController::class, 'index'])->name('index_bookings');
     Route::post('/bookings/add', [BookingController::class, 'create'])->name('bookings_add');
+    Route::post('/bookings/update/{id}', [BookingController::class, 'update']);
+    Route::get('/bookings/delete/{id}', [BookingController::class, 'delete']);
 
 });

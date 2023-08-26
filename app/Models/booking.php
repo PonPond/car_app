@@ -24,6 +24,7 @@ class Booking extends Model
         'img1',
         'img2',
         'img3',
+        'status'
     ];
 
     public function bookingtocars()
