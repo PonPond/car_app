@@ -20,6 +20,17 @@ class BookingController extends Controller
         return view('page.bookings.index', compact('bookings','car','users'));
     }
 
+
+
+  public function getback()
+    {
+        $car = Car::all();
+        $users = UserProfile::all();
+        $bookings = Booking::paginate(15);
+        return view('page.getback.index', compact('bookings','car','users'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
