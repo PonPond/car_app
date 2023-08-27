@@ -169,7 +169,24 @@
 
             @endif
 
+              @if (request()->routeIs('index_getback'))
+                  <!-- Cards -->
+                  <li class="menu-item active">
+                      <a href="{{route('index_getback')}}" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-collection"></i>
+                          <div data-i18n="Basic">คืนรถ</div>
+                      </a>
+                  </li>
 
+              @else
+                  <li class="menu-item ">
+                      <a href="{{route('index_getback')}}" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-collection"></i>
+                          <div data-i18n="Basic">คืนรถ</div>
+                      </a>
+                  </li>
+
+              @endif
 
 
 

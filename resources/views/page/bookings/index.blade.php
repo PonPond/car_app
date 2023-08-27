@@ -210,8 +210,10 @@
                                     <span class="badge rounded-pill bg-label-success">อนุมัติ</span>
                                 @elseif($item->status == 2)
                                     <span class="badge rounded-pill bg-label-danger">ไม่อนุมัติ</span>
-                                @endif
 
+                                    @elseif($item->status == 3)
+                                        <span class="badge rounded-pill bg-label-info">คืนรถเรียบร้อย</span>
+                                    @endif
 
                             </td>
                             <td style="text-align:center;">
@@ -222,14 +224,14 @@
                                     type="button"
                                     class="btn btn-primary"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#basicModal1"
+                                    data-bs-target="#basicModal1{{$item->id}}"
                                 >
                                     แก้ไข
                                 </button>
                                 <a href="{{ url('/bookings/delete/' . $item->id) }}" class="btn btn-danger"
                                    onclick="return confirm('ลบหรือไม่ ?')"> ลบข้อมูล</a>
                                 <!-- Modal -->
-                                <div class="modal fade" id="basicModal1" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="basicModal1{{$item->id}}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -292,7 +294,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $bookings->links('page.pagination.custom') }}
             </div>
+
         </div>
 
     </div>

@@ -16,7 +16,8 @@ class BookingController extends Controller
     {
         $car = Car::all();
         $users = UserProfile::all();
-        $bookings = Booking::paginate(15);
+
+        $bookings = Booking::orderBy('created_at', 'desc')->paginate(2);
         return view('page.bookings.index', compact('bookings','car','users'));
     }
 
@@ -26,8 +27,9 @@ class BookingController extends Controller
     {
         $car = Car::all();
         $users = UserProfile::all();
-        $bookings = Booking::paginate(15);
-        return view('page.getback.index', compact('bookings','car','users'));
+        $bookings = Booking::where('status', 1)->paginate(15);
+        $getback= Booking::where('status', 3)->paginate(15);
+        return view('page.getback.index', compact('bookings','car','users','getback'));
     }
 
 
