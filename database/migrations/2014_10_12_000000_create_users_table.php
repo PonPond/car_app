@@ -45,16 +45,12 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('brand');
-            $table->string('detail');
+            $table->string('version');
+            $table->string('category');
             $table->string('number_car')->unique();
-            $table->string('power_system')->nullable();
-            $table->string('battery')->nullable();
-            $table->string('electric_motor')->nullable();
-            $table->string('steering')->nullable();
-            $table->string('car_system')->nullable();
-            $table->string('anti_system')->nullable();
+            $table->string('colors')->nullable();
+            $table->string('detail')->nullable();
             $table->string('price');
-            $table->string('mm')->nullable();
             $table->string('img1')->nullable();
             $table->string('img2')->nullable();
             $table->string('img3')->nullable();

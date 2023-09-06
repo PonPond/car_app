@@ -33,6 +33,18 @@ class BookingController extends Controller
     }
 
 
+
+    public function index2()
+    {
+        $car = Car::all();
+        $users = UserProfile::all();
+        $bookings = Booking::whereIn('status', [1, 3])
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+        return view('page.bookings.index2', compact('bookings','car','users'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -60,11 +72,16 @@ class BookingController extends Controller
 
         );
 
+
+
         $startDateTime = Carbon::parse($request->start);
         $endDateTime = Carbon::parse($request->end);
         $daysDifference = $endDateTime->diffInDays($startDateTime);
 
         $cars = Car::find($request->cars_id);
+
+
+
 
         $booking = new Booking();
         $booking->users_id = $request->users_id;

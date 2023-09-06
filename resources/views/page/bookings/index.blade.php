@@ -173,7 +173,7 @@
                             <td> {{ $bookings->firstItem() + $loop->index }}</td>
                             <td style="text-align:center;">
                                 @foreach($item->bookingtocars as $item1)
-                                    {{$item1->brand}}
+                                    {{$item1->brand}}: {{$item1->version}}
                                 @endforeach
                             </td>
                             <td style="text-align:center;">

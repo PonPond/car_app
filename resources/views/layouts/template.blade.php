@@ -188,9 +188,48 @@
 
               @endif
 
+              @if (request()->routeIs('index_bookings_history'))
+                  <!-- Cards -->
+                  <li class="menu-item active">
+                      <a href="{{route('index_bookings_history')}}" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-collection"></i>
+                          <div data-i18n="Basic">ประวัติการจอง - คืน</div>
+                      </a>
+                  </li>
 
+              @else
+                  <li class="menu-item ">
+                      <a href="{{route('index_bookings_history')}}" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-collection"></i>
+                          <div data-i18n="Basic">ประวัติการจอง - คืน</div>
+                      </a>
+                  </li>
 
+              @endif
+              
 
+              <li class="menu-header high text-uppercase"><span class="menu-header-text">เกี่ยวกับฉัน</span> </li>
+
+@if (request()->routeIs('index_profile'))
+   <!-- Cards -->
+   <li class="menu-item active">
+     <a href="{{route('index_profile')}}" class="menu-link">
+       <i class="menu-icon tf-icons bx bx-collection"></i>
+       <div data-i18n="Basic">โปรไฟล์</div>
+     </a>
+   </li>
+
+   @else
+   <li class="menu-item ">
+     <a href="{{route('index_profile')}}" class="menu-link">
+       <i class="menu-icon tf-icons bx bx-collection"></i>
+       <div data-i18n="Basic">โปรไฟล์</div>
+     </a>
+   </li>
+
+   @endif
+
+              
 
           </ul>
 

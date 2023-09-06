@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Car;
+use Illuminate\Http\Request;
+
 class CarController extends Controller
 {
     /**
@@ -28,33 +29,63 @@ class CarController extends Controller
             'brand' => 'required',
             'detail' => 'required',
             'price' => 'required',
-
+    
         ],
             [
                 'number_car.unique' => "ทะเบียนรถ ซ้ำ",
                 'brand.required' => "กรุณากรอกยี่ห่อ",
                 'detail.required' => "กรุณากรอกรายละเอียด",
                 'price.required' => 'กรุณากรอกราคา',
+             
             ],
 
         );
+
+        $room_image = $request->file('img1');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($room_image->getClientOriginalExtension());
+        $img_name = $name_gen . '.' . $img_ext;
+        $upload_location = 'img/car/';
+        $full_path1 = $upload_location . $img_name;
+        #2
+
+        $room_image2 = $request->file('img2');
+        $name_gen2 = hexdec(uniqid());
+        $img_ext2 = strtolower($room_image2->getClientOriginalExtension());
+        $img_name2 = $name_gen2 . '.' . $img_ext2;
+        $upload_location2 = 'img/car/';
+        $full_path2 = $upload_location2 . $img_name2;
+
+        #3
+        $room_image3 = $request->file('img3');
+        $name_gen3 = hexdec(uniqid());
+        $img_ext3 = strtolower($room_image3->getClientOriginalExtension());
+        $img_name3 = $name_gen3 . '.' . $img_ext3;
+        $upload_location3 = 'img/car/';
+        $full_path3 = $upload_location3 . $img_name3;
+
+
+
+
 
         $car = new Car();
         $car->brand = $request->brand;
         $car->detail = $request->detail;
         $car->number_car = $request->number_car;
-        $car->power_system = $request->power_system;
-        $car->battery = $request->battery;
-        $car->electric_motor = $request->electric_motor;
-        $car->steering = $request->steering;
-        $car->car_system = $request->car_system;
-        $car->anti_system = $request->anti_system;
-        $car->mm = $request->mm;
+        $car->version = $request->version;
+        $car->category = $request->category;
+        $car->colors = $request->colors;
         $car->price =$request->price;
-        $car->img1 = $request->img1;
-        $car->img2 = $request->img2;
-        $car->img3 = $request->img3;
+        $car->img1 = $full_path1;
+        $car->img2 = $full_path2;
+        $car->img3 = $full_path3;
         $car->save();
+
+
+        $room_image->move($upload_location, $img_name);
+        $room_image2->move($upload_location, $img_name2);
+        $room_image3->move($upload_location, $img_name3);
+
 
         return redirect()->route('index_car')->with('success', "บันทึกข้อมูลเรียบร้อย");
     }
@@ -119,17 +150,15 @@ class CarController extends Controller
            'brand' => $request->brand,
           'detail' => $request->detail,
            'number_car' => $request->number_car,
-            'power_system' => $request->power_system,
-           'battery' => $request->battery,
-            'electric_motor' => $request->electric_motor,
-           'steering' => $request->steering,
-           'car_system' => $request->car_system,
-           'anti_system' => $request->anti_system,
-           'mm' => $request->mm,
-           'price' =>$request->price,
+            'version' => $request->version,
+           'category' => $request->category,
+            'colors' => $request->colors,
+           'price' => $request->price,
            'img1' => $request->img1,
            'img2' => $request->img2,
            'img3' => $request->img3,
+    
+        
 
 
         ]);

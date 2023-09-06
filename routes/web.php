@@ -6,7 +6,10 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\BookingController;
-
+use App\Http\Controllers\ProfileController;
+use App\Models\UserProfile;
+use App\Models\Booking;
+use App\Models\Car;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +31,14 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $totalUserProfile = UserProfile::count();
+        $totalCar = Car::count();
+        $countStatusOneBookings = Booking::where('status', 1)->count();
+        $countStatusTreeBookings = Booking::where('status', 3)->count();
+
+        return view('dashboard', compact('totalUserProfile','totalCar','countStatusOneBookings','countStatusTreeBookings'));
     })->name('dashboard');
+
 
     Route::get('/users', [UserProfileController::class, 'index'])->name('index_users');
 
@@ -48,11 +57,14 @@ Route::middleware([
 
 
     Route::get('/bookings', [BookingController::class, 'index'])->name('index_bookings');
+    Route::get('/bookings_history', [BookingController::class, 'index2'])->name('index_bookings_history');
     Route::post('/bookings/add', [BookingController::class, 'create'])->name('bookings_add');
     Route::post('/bookings/update/{id}', [BookingController::class, 'update']);
     Route::get('/bookings/delete/{id}', [BookingController::class, 'delete']);
 
     Route::get('/getback', [BookingController::class, 'getback'])->name('index_getback');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('index_profile');
 
 
 });

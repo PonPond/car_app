@@ -43,64 +43,56 @@
 
                               </div>
                               <div class="modal-body">
-                              <form action="{{ route('car_add') }}" method="post">
+                              <form action="{{ route('car_add') }}" method="post"  enctype="multipart/form-data">> 
                               @csrf
                                 <div class="row">
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">ยี่ห่อ - รุ่น</label>
-                                    <input type="text"  name="brand" class="form-control" placeholder="Honda" />
+                                    <label for="nameBasic" class="form-label">ยี่ห่อ</label>
+                                    <select class="form-select" id="carSelect" name="brand"
+                                        aria-label="Default select example">
+                                    <option selected>กรุณาเลือกรถ</option>
+                    
+                                        <option value="Honda">Honda</option>
+                                        <option value="Isuzu">Isuzu</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Suzuki">Suzuki</option>
+                                        <option value="Mitsubishi">Mitsubishi</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Mazda">Mazda</option>
+                                        <option value="Ford">Ford</option>
+                                </select>
                                   </div>
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">รายละเอียด</label>
-                                    <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" />
+                                    <label for="nameBasic" class="form-label">รุ่น</label>
+                                    <input type="text"  name="version" class="form-control" placeholder="รุ่น" />
                                   </div>
 
                                 </div>
                                 <br>
                                 <div class="row ">
-                                  <div class="col-4 mb-4">
+                                  <div class="col-6 mb-4">
                                     <label for="nameBasic" class="form-label">ทะเบียนรถ</label>
                                     <input type="text"  name="number_car" class="form-control" placeholder="กข123"  />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">เครื่องยนต์และมอเตอร์ไฟฟ้า</label>
-                                    <input type="text" name="electric_motor" class="form-control" placeholder="V551" />
+                                  <div class="col-6 mb-4">
+                                    <label for="emailBasic" class="form-label">ประเภทรถ</label>
+                                    <input type="text" name="category" class="form-control" placeholder="รถยนต์" />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกำลัง</label>
-                                    <input type="text"  name="power_system" class="form-control" placeholder="V231" />
-                                  </div>
+                                
                                 </div>
 
                                 <div class="row ">
+                                <div class="col-4 mb-4">
+                                    <label for="emailBasic" class="form-label">สี</label>
+                                    <input type="text"  name="colors" class="form-control" placeholder="แดง" />
+                                  </div>
                                   <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
-                                    <input type="text" id="tel" name="battery" class="form-control" placeholder="500W" />
+                                    <label for="nameBasic" class="form-label">ความจุ</label>
+                                    <input type="text" id="tel" name="detail" class="form-control" placeholder="5 คน" />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">มิติ(มิติเมตร)</label>
-                                    <input type="text"  name="mm" class="form-control" placeholder="-" />
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบพวงมาลัย</label>
-                                    <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า" />
-                                  </div>
-                                </div>
-
-                                <div class="row ">
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">ระบบรถ</label>
-                                    <input type="text"  name="car_system" class="form-control" placeholder="V321" />
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกันสั่นสะเทือน</label>
-                                    <input type="text"  name="anti_system" class="form-control" placeholder="-" />
-                                  </div>
 
                                   <div class="col-4 mb-4">
                                     <label for="emailBasic" class="form-label">ราคาเช่าต่อวัน</label>
@@ -111,23 +103,31 @@
                                 </div>
 
                                 <div class="row ">
-                                  <div class="col-4 mb-4">
+                                  <div class="col-12 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ1</label>
-                                    <input type="text"  name="img1" class="form-control" placeholder="Link" />
+    
+                                    <input type="file" class="form-control" name="img1">
+
                                   </div>
 
-                                  <div class="col-4 mb-4">
+                                  <div class="col-12 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ2</label>
-                                    <input type="text"  name="img2" class="form-control" placeholder="Link" />
+                                    <input type="file"  name="img2" class="form-control"  />
                                   </div>
 
-                                  <div class="col-4 mb-4">
+                                  <div class="col-12 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ3</label>
-                                    <input type="text"  name="img3" class="form-control" placeholder="Link" />
+                                    <input type="file"  name="img3" class="form-control"  />
                                   </div>
 
 
                                 </div>
+
+                                @error('img1')
+                            <div class="my-2">
+                                <span class="text-danger my-2"> {{ $message }} </span>
+                            </div>
+                            @enderror
 
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -216,92 +216,63 @@
 
                                 <div class="row">
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">ยี่ห่อ - รุ่น</label>
-                                    <input type="text"  name="brand" class="form-control" placeholder="Honda" value="{{$item->brand}}" />
+                                    <label for="nameBasic" class="form-label">ยี่ห่อ</label>
+                                    <select class="form-select" id="carSelect" name="brand"
+                                        aria-label="Default select example">
+                                    <option value="{{$item->brand}}" >{{$item->brand}}</option>
+                    
+                                        <option value="Honda">Honda</option>
+                                        <option value="Isuzu">Isuzu</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Suzuki">Suzuki</option>
+                                        <option value="Mitsubishi">Mitsubishi</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Mazda">Mazda</option>
+                                        <option value="Ford">Ford</option>
+                                </select>
                                   </div>
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">รายละเอียด</label>
-                                    <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" value="{{$item->detail}}"/>
+                                    <label for="nameBasic" class="form-label">รุ่น</label>
+                                    <input type="text"  name="version" class="form-control" value="{{$item->version}}" />
                                   </div>
 
                                 </div>
                                 <br>
                                 <div class="row ">
-                                  <div class="col-4 mb-4">
+                                  <div class="col-6 mb-4">
                                     <label for="nameBasic" class="form-label">ทะเบียนรถ</label>
-                                    <input type="text"  name="number_car" class="form-control" placeholder="กข123" value="{{$item->number_car}}" />
+                                    <input type="text"  name="number_car" class="form-control" value="{{$item->number_car}}"  />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">เครื่องยนต์และมอเตอร์ไฟฟ้า</label>
-                                    <input type="text" name="electric_motor" class="form-control" placeholder="V551" value="{{$item->electric_motor}}" />
+                                  <div class="col-6 mb-4">
+                                    <label for="emailBasic" class="form-label">ประเภทรถ</label>
+                                    <input type="text" name="category" class="form-control" value="{{$item->category}}" />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกำลัง</label>
-                                    <input type="text"  name="power_system" class="form-control" placeholder="V231"  value="{{$item->power_system}}"/>
-                                  </div>
+                                
                                 </div>
 
                                 <div class="row ">
+                                <div class="col-4 mb-4">
+                                    <label for="emailBasic" class="form-label">สี</label>
+                                    <input type="text"  name="colors" class="form-control" value="{{$item->colors}}" />
+                                  </div>
                                   <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
-                                    <input type="text" id="tel" name="battery" class="form-control" placeholder="500W"  value="{{$item->battery}}"/>
+                                    <label for="nameBasic" class="form-label">ความจุ</label>
+                                    <input type="text" id="tel" name="detail" class="form-control" value="{{$item->detail}}" />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">มิติ(มิติเมตร)</label>
-                                    <input type="text"  name="mm" class="form-control" placeholder="-" value="{{$item->mm}}"/>
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบพวงมาลัย</label>
-                                    <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า"  value="{{$item->steering}}"/>
-                                  </div>
-                                </div>
-
-                                <div class="row ">
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">ระบบรถ</label>
-                                    <input type="text"  name="car_system" class="form-control" placeholder="V321" value="{{$item->car_system}}" />
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกันสั่นสะเทือน</label>
-                                    <input type="text"  name="anti_system" class="form-control" placeholder="-" value="{{$item->anti_system}}" />
-                                  </div>
 
                                   <div class="col-4 mb-4">
                                     <label for="emailBasic" class="form-label">ราคาเช่าต่อวัน</label>
-                                    <input type="text"  name="price" class="form-control" placeholder="500" />
+                                    <input type="text"  name="price" class="form-control" value="{{$item->price}}" />
                                   </div>
-
-
+                                  <input type="hidden"  name="img1" class="form-control" value="{{$item->img1}}" />
+                                  <input type="hidden"  name="img2" class="form-control" value="{{$item->img2}}" />
+                                  <input type="hidden"  name="img3" class="form-control" value="{{$item->img3}}" />
                                 </div>
 
-                                <div class="row ">
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ1</label>
-                                    <input type="text"  name="img1" class="form-control" placeholder="Link" value="{{$item->img1}}" />
-                                    <br>
-                                    <img src="{{$item->img1}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ2</label>
-                                    <input type="text"  name="img2" class="form-control" placeholder="Link"  value="{{$item->img2}}"/>
-                                    <br>
-                                    <img src="{{$item->img2}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ3</label>
-                                    <input type="text"  name="img3" class="form-control" placeholder="Link" value="{{$item->img2}}" />
-                                    <br>
-                                    <img src="{{$item->img3}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
-                                  </div>
-
-
+                         
                                 </div>
 
                               <div class="modal-footer">
