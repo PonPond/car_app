@@ -43,11 +43,11 @@
 
                               </div>
                               <div class="modal-body">
-                              <form action="{{ route('car_add') }}" method="post"  enctype="multipart/form-data">> 
+                              <form action="{{ route('car_add') }}" method="post"  enctype="multipart/form-data">
                               @csrf
                                 <div class="row">
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">ยี่ห่อ</label>
+                                    <label for="nameBasic" class="form-label"><b>*ยี่ห่อ</b></label>
                                     <select class="form-select" id="carSelect" name="brand"
                                         aria-label="Default select example">
                                     <option selected>กรุณาเลือกรถ</option>
@@ -63,7 +63,7 @@
                                 </select>
                                   </div>
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">รุ่น</label>
+                                    <label for="nameBasic" class="form-label"><b>*รุ่น</b></label>
                                     <input type="text"  name="version" class="form-control" placeholder="รุ่น" />
                                   </div>
 
@@ -71,12 +71,12 @@
                                 <br>
                                 <div class="row ">
                                   <div class="col-6 mb-4">
-                                    <label for="nameBasic" class="form-label">ทะเบียนรถ</label>
+                                    <label for="nameBasic" class="form-label"><b>*ทะเบียนรถ</b></label>
                                     <input type="text"  name="number_car" class="form-control" placeholder="กข123"  />
                                   </div>
 
                                   <div class="col-6 mb-4">
-                                    <label for="emailBasic" class="form-label">ประเภทรถ</label>
+                                    <label for="emailBasic" class="form-label"><b>*ประเภทรถ</b></label>
                                     <input type="text" name="category" class="form-control" placeholder="รถยนต์" />
                                   </div>
 
@@ -85,17 +85,17 @@
 
                                 <div class="row ">
                                 <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">สี</label>
+                                    <label for="emailBasic" class="form-label"><b>*สี</b></label>
                                     <input type="text"  name="colors" class="form-control" placeholder="แดง" />
                                   </div>
                                   <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">ความจุ</label>
+                                    <label for="nameBasic" class="form-label"><b>*ความจุ</b></label>
                                     <input type="text" id="tel" name="detail" class="form-control" placeholder="5 คน" />
                                   </div>
 
 
                                   <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ราคาเช่าต่อวัน</label>
+                                    <label for="emailBasic" class="form-label"><b>*ราคาเช่าต่อวัน</b></label>
                                     <input type="text"  name="price" class="form-control" placeholder="500" />
                                   </div>
 
@@ -104,19 +104,19 @@
 
                                 <div class="row ">
                                   <div class="col-12 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ1</label>
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ1</b></label>
     
                                     <input type="file" class="form-control" name="img1">
 
                                   </div>
 
                                   <div class="col-12 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ2</label>
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ2</b></label>
                                     <input type="file"  name="img2" class="form-control"  />
                                   </div>
 
                                   <div class="col-12 mb-4">
-                                    <label for="nameBasic" class="form-label">รูปภาพ3</label>
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ3</b></label>
                                     <input type="file"  name="img3" class="form-control"  />
                                   </div>
 
