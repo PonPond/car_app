@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use GuzzleHttp\Utils;
 
 class CarController extends Controller
 {
@@ -57,15 +60,44 @@ class CarController extends Controller
         $full_path2 = $upload_location2 . $img_name2;
 
         #3
-        $room_image3 = $request->file('img3');
-        $name_gen3 = hexdec(uniqid());
-        $img_ext3 = strtolower($room_image3->getClientOriginalExtension());
-        $img_name3 = $name_gen3 . '.' . $img_ext3;
-        $upload_location3 = 'img/car/';
-        $full_path3 = $upload_location3 . $img_name3;
+        // $room_image3 = $request->file('img3');
+        // $name_gen3 = hexdec(uniqid());
+        // $img_ext3 = strtolower($room_image3->getClientOriginalExtension());
+        // $img_name3 = $name_gen3 . '.' . $img_ext3;
+        // $upload_location3 = 'img/car/';
+        // $full_path3 = $upload_location3 . $img_name3;
+        
+        $client = new Client();
+        if ($request->hasFile('img3')) {
+            $file = $request->file('img3');
 
+            $options = [
+                'multipart' => [
+                    [
+                        'name' => 'status',
+                        'contents' => 'active'
+                    ],
+                    [
+                        'name' => 'file[]',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                        'headers' => [
+                            'Content-Type' => $file->getClientMimeType()
+                        ]
+                    ]
+                ]
+            ];
 
+            $guzzleRequest = new GuzzleRequest('POST', 'http://154.26.133.10:8808/api/v1/medias');
+            $response = $client->send($guzzleRequest, $options);
+            $responseBody = $response->getBody()->getContents();
+            $responseData = json_decode($responseBody, true);
 
+            dd($responseData);
+            return response()->json(['data' => $responseData], 200);
+        } else {
+            return response()->json(['error' => 'No files found in the request'], 400);
+        }
 
 
         $car = new Car();
