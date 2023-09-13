@@ -92,9 +92,9 @@ class CarController extends Controller
             $response = $client->send($guzzleRequest, $options);
             $responseBody = $response->getBody()->getContents();
             $responseData = json_decode($responseBody, true);
+            $urls = $responseData['data']['url'];
 
-            dd($responseData);
-            return response()->json(['data' => $responseData], 200);
+
         } else {
             return response()->json(['error' => 'No files found in the request'], 400);
         }
@@ -110,13 +110,12 @@ class CarController extends Controller
         $car->price =$request->price;
         $car->img1 = $full_path1;
         $car->img2 = $full_path2;
-        $car->img3 = $full_path3;
+        $car->img3 = $urls[0];
         $car->save();
 
 
         $room_image->move($upload_location, $img_name);
         $room_image2->move($upload_location, $img_name2);
-        $room_image3->move($upload_location, $img_name3);
 
 
         return redirect()->route('index_car')->with('success', "บันทึกข้อมูลเรียบร้อย");
