@@ -147,43 +147,8 @@ class CarController extends Controller
         return redirect()->route('index_car')->with('success', "บันทึกข้อมูลเรียบร้อย");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-
-
-
-
-
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-
-
-
 
         $request->validate([
             'number_car' => 'required',
@@ -200,10 +165,137 @@ class CarController extends Controller
 
         );
 
+        $client = new Client();
+        $errorimage1 = "1";
+        $errorimage2 ="1";
+        $errorimage3 = "1";
+       
+        
+        if ($request->hasFile('img1')) {
+            $file = $request->file('img1');
+            $options = [
+                'multipart' => [
+                    [
+                        'name' => 'status',
+                        'contents' => 'active'
+                    ],
+                    [
+                        'name' => 'file[]',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                        'headers' => [
+                            'Content-Type' => $file->getClientMimeType()
+                        ]
+                    ]
+                ]
+            ];
+
+            $guzzleRequest = new GuzzleRequest('POST', 'http://154.26.133.10:8808/api/v1/medias');
+            $response = $client->send($guzzleRequest, $options);
+            $responseBody = $response->getBody()->getContents();
+            $responseData = json_decode($responseBody, true);
+            $urls1 = $responseData['data']['url'];
+        } else {
+           
+            $errorimage1 = "0";
+    
+        }
+
+        if ($request->hasFile('img2')) {
+            $file = $request->file('img2');
+            $options = [
+                'multipart' => [
+                    [
+                        'name' => 'status',
+                        'contents' => 'active'
+                    ],
+                    [
+                        'name' => 'file[]',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                        'headers' => [
+                            'Content-Type' => $file->getClientMimeType()
+                        ]
+                    ]
+                ]
+            ];
+
+            $guzzleRequest = new GuzzleRequest('POST', 'http://154.26.133.10:8808/api/v1/medias');
+            $response = $client->send($guzzleRequest, $options);
+            $responseBody = $response->getBody()->getContents();
+            $responseData = json_decode($responseBody, true);
+            $urls2 = $responseData['data']['url'];
+        } else {
+            $errorimage2 = "0";
+        }
+        
+        if ($request->hasFile('img3')) {
+            $file = $request->file('img3');
+            $options = [
+                'multipart' => [
+                    [
+                        'name' => 'status',
+                        'contents' => 'active'
+                    ],
+                    [
+                        'name' => 'file[]',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                        'headers' => [
+                            'Content-Type' => $file->getClientMimeType()
+                        ]
+                    ]
+                ]
+            ];
+
+            $guzzleRequest = new GuzzleRequest('POST', 'http://154.26.133.10:8808/api/v1/medias');
+            $response = $client->send($guzzleRequest, $options);
+            $responseBody = $response->getBody()->getContents();
+            $responseData = json_decode($responseBody, true);
+            $urls3 = $responseData['data']['url'];
+        } else {
+            $errorimage3 = "0";
+        }
+
+      
+          
+
+        if($errorimage1 == "1"){
+            $image1 = $urls1[0];
+            
+        }
+
+        if($errorimage1 == "0"){
+            $image1 = $request->img1_old;
+        }
+
+#---------------
+
+        if($errorimage2 == "1"){
+            $image2 = $urls2[0];
+            
+        }
+
+        if($errorimage2 == "0"){
+            $image2 = $request->img2_old;
+        }
+
+#-----------
+
+
+        if($errorimage3 == "1"){
+            $image3 = $urls3[0];
+            
+        }
+
+        if($errorimage3 == "0"){
+            $image3 = $request->img3_old;
+        }
+        
+      
+    
 
         Car::find($id)->update([
-
-
            'brand' => $request->brand,
           'detail' => $request->detail,
            'number_car' => $request->number_car,
@@ -211,13 +303,9 @@ class CarController extends Controller
            'category' => $request->category,
             'colors' => $request->colors,
            'price' => $request->price,
-           'img1' => $request->img1,
-           'img2' => $request->img2,
-           'img3' => $request->img3,
-    
-        
-
-
+           'img1' => $image1,
+           'img2' => $image2,
+           'img3' => $image3,
         ]);
 
         return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");

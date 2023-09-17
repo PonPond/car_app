@@ -211,7 +211,7 @@
                               </div>
                               <div class="modal-body">
                                 <form action="{{ url('/car/update/' . $item->id) }}"
-                                method="post">
+                                method="post" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
@@ -253,7 +253,7 @@
                                 </div>
 
                                 <div class="row ">
-                                <div class="col-4 mb-4">
+                                  <div class="col-4 mb-4">
                                     <label for="emailBasic" class="form-label">สี</label>
                                     <input type="text"  name="colors" class="form-control" value="{{$item->colors}}" />
                                   </div>
@@ -267,12 +267,36 @@
                                     <label for="emailBasic" class="form-label">ราคาเช่าต่อวัน</label>
                                     <input type="text"  name="price" class="form-control" value="{{$item->price}}" />
                                   </div>
-                                  <input type="hidden"  name="img1" class="form-control" value="{{$item->img1}}" />
-                                  <input type="hidden"  name="img2" class="form-control" value="{{$item->img2}}" />
-                                  <input type="hidden"  name="img3" class="form-control" value="{{$item->img3}}" />
                                 </div>
 
+                                <div class="row">
+                                  <div class="col-12 mb-4">
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ1</b></label>
+                                    <input type="file"  name="img1" class="form-control"   />
+                                    <input type="text"  name="img1_old" class="form-control"  value="{{$item->img1}}" />
+                                    
+                                    <br>
+                                    <img src="{{$item->img1}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
+                                  </div>
+                                  <div class="col-12 mb-4">
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ2</b></label>
+                                    <input type="file"  name="img2" class="form-control"   />
+                                    <input type="text"  name="img2_old" class="form-control"  value="{{$item->img2}}" />
+                                    <br>
+                                    <img src="{{$item->img2}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
+                                  </div>
+                                  <div class="col-12 mb-4">
+                                    <label for="nameBasic" class="form-label"><b>*รูปภาพ3</b></label>
+                                    <input type="file"  name="img3" class="form-control"   />
+                                    <input type="text"  name="img3_old" class="form-control"  value="{{$item->img3}}" />
+                                    <br>
+                                    <img src="{{$item->img3}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
+                                  </div>
+
+                           
                          
+                                  </div>
+                               
                                 </div>
 
                               <div class="modal-footer">
@@ -305,90 +329,70 @@
                                 <form action="{{ url('/car/update/' . $item->id) }}"
                                 method="post">
                                 @csrf
-
                                 <div class="row">
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">ยี่ห่อ - รุ่น</label>
-                                    <input type="text"  name="brand" class="form-control" placeholder="Honda" value="{{$item->brand}}" disabled />
+                                    <label for="nameBasic" class="form-label">ยี่ห่อ</label>
+                                    <input type="text"  name="version" class="form-control" value="{{$item->brand}}" disabled />
+                                 
+                    
+                                </select>
                                   </div>
                                   <div class="col-6 mb-6">
-                                    <label for="nameBasic" class="form-label">รายละเอียด</label>
-                                    <input type="text"  name="detail" class="form-control" placeholder="รายละเอียด" value="{{$item->detail}}" disabled/>
+                                    <label for="nameBasic" class="form-label">รุ่น</label>
+                                    <input type="text"  name="version" class="form-control" value="{{$item->version}}" disabled />
                                   </div>
 
                                 </div>
-                                <br>
                                 <div class="row ">
-                                  <div class="col-4 mb-4">
+                                  <div class="col-6 mb-4">
                                     <label for="nameBasic" class="form-label">ทะเบียนรถ</label>
-                                    <input type="text"  name="number_car" class="form-control" placeholder="กข123" value="{{$item->number_car}}" disabled />
+                                    <input type="text"  name="number_car" class="form-control" value="{{$item->number_car}}" disabled />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">เครื่องยนต์และมอเตอร์ไฟฟ้า</label>
-                                    <input type="text" name="electric_motor" class="form-control" placeholder="V551" value="{{$item->electric_motor}}"disabled />
+                                  <div class="col-6 mb-4">
+                                    <label for="emailBasic" class="form-label">ประเภทรถ</label>
+                                    <input type="text" name="category" class="form-control" value="{{$item->category}}" disabled />
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกำลัง</label>
-                                    <input type="text"  name="power_system" class="form-control" placeholder="V231"  value="{{$item->power_system}}" disabled/>
-                                  </div>
+                                
                                 </div>
 
                                 <div class="row ">
                                   <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">แบตเตอรรี่</label>
-                                    <input type="text" id="tel" name="battery" class="form-control" placeholder="500W"  value="{{$item->battery}}" disabled/>
+                                    <label for="emailBasic" class="form-label">สี</label>
+                                    <input type="text"  name="colors" class="form-control" value="{{$item->colors}}" disabled/>
+                                  </div>
+                                  <div class="col-4 mb-4">
+                                    <label for="nameBasic" class="form-label">ความจุ</label>
+                                    <input type="text" id="tel" name="detail" class="form-control" value="{{$item->detail}}" disabled/>
                                   </div>
 
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">มิติ(มิติเมตร)</label>
-                                    <input type="text"  name="mm" class="form-control" placeholder="-" value="{{$item->mm}}" disabled/>
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบพวงมาลัย</label>
-                                    <input type="text"  name="steering" class="form-control" placeholder="ไฟฟ้า"  value="{{$item->steering}}" disabled/>
-                                  </div>
-                                </div>
-
-                                <div class="row ">
-                                  <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label">ระบบรถ</label>
-                                    <input type="text"  name="car_system" class="form-control" placeholder="V321" value="{{$item->car_system}}" disabled/>
-                                  </div>
-
-                                  <div class="col-4 mb-4">
-                                    <label for="emailBasic" class="form-label">ระบบกันสั่นสะเทือน</label>
-                                    <input type="text"  name="anti_system" class="form-control" placeholder="-" value="{{$item->anti_system}}" disabled/>
-                                  </div>
 
                                   <div class="col-4 mb-4">
                                     <label for="emailBasic" class="form-label">ราคาเช่าต่อวัน</label>
                                     <input type="text"  name="price" class="form-control" value="{{$item->price}}" disabled />
                                   </div>
-
-
+                               
                                 </div>
 
                                 <div class="row ">
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ1</label>
-                                    <input type="text"  name="img1" class="form-control" placeholder="Link" value="{{$item->img1}}"disabled />
+                                  
                                     <br>
                                     <img src="{{$item->img1}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
                                   </div>
 
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ2</label>
-                                    <input type="text"  name="img2" class="form-control" placeholder="Link"  value="{{$item->img2}}" disabled/>
+                                  
                                     <br>
                                     <img src="{{$item->img2}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
                                   </div>
 
                                   <div class="col-4 mb-4">
                                     <label for="nameBasic" class="form-label">รูปภาพ3</label>
-                                    <input type="text"  name="img3" class="form-control" placeholder="Link" value="{{$item->img2}}"disabled />
+                                  
                                     <br>
                                     <img src="{{$item->img3}}" alt="Chevrolet Corvette Stingray" style="width: 150px; height: 100px;">
                                   </div>
