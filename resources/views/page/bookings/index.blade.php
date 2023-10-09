@@ -1,23 +1,34 @@
 @extends('layouts.template')
 @section('content')
 
-    <div class="col-lg-3">
-
-{{--        @if (session('success'))--}}
-{{--            <div class="alert alert-success" role="alert">เพิ่มข้อมูลสำเร็จ</div>--}}
-{{--        @endif--}}
-
-{{--        @if (session('update'))--}}
-{{--            <div class="alert alert-warning" role="alert">อัปเดทข้อมูลเรียบร้อย</div>--}}
-{{--        @endif--}}
-
-{{--        @if (session('delete'))--}}
-{{--            <div class="alert alert-danger" role="alert">ลบข้อมูลเรียบร้อย</div>--}}
-{{--        @endif--}}
 
 
-        <div class="card">
-            <h5 class="card-header">เพิ่มการเช่า</h5>
+    <div class="col-lg-9">
+    <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#basicModal"
+                        style="margin-bottom: 10px;"
+                          >
+                          เพิ่มการเช่า
+                </button>
+
+                <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel1">เพิ่มการเช่า</h5>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+
+                              </div>
+                              <div class="modal-body">
+                              <div class="card">
             <div class="container">
                 <form action="{{ route('bookings_add') }}" method="post">
                     <div class="row">
@@ -124,15 +135,23 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2">บันทึก</button>
-                </form>
-
+                
             </div>
         </div>
 
-    </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                  ปิด
+                                </button>
+                                <button type="submit" class="btn btn-primary">บันทึก</button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
 
-    <div class="col-lg-9">
+    </div>
 
         @if (session('success'))
             <div class="alert alert-success" role="alert">เพิ่มข้อมูลสำเร็จ</div>
