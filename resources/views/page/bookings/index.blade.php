@@ -85,22 +85,22 @@
 
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">บัตรประชาชน</label>
+                                <label for="exampleFormControlInput1" class="form-label">*บัตรประชาชน</label>
                                 <input type="text" class="form-control" name="number_id_img"/>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">ใบขับขี่</label>
+                                <label for="exampleFormControlInput1" class="form-label">*ใบขับขี่</label>
                                 <input type="text" class="form-control" name="car_id_img"/>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">หลักฐานการโอนเงิน</label>
-                                <input type="text" class="form-control" name="slip_id_img"/>
+                                <label for="exampleFormControlInput1" class="form-label">*หลักฐานการโอนเงิน</label>
+                                <input type="file" class="form-control" name="slip_id_img"/>
                             </div>
                         </div>
                         @error('users_id')

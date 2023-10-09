@@ -77,7 +77,17 @@
 
                                   <div class="col-6 mb-4">
                                     <label for="emailBasic" class="form-label"><b>*ประเภทรถ</b></label>
-                                    <input type="text" name="category" class="form-control" placeholder="รถยนต์" />
+                                    <select class="form-select" id="carSelect" name="category"
+                                        aria-label="Default select example">
+                                    <option selected>กรุณาเลือกประเภท</option>
+                    
+                                        <option value="เล็ก">เล็ก</option>
+                                        <option value="กลาง">กลาง</option>
+                                        <option value="ใหญ่">ใหญ่</option>
+                                        <option value="รถมอเตอร์ไซค์">รถมอเตอร์ไซค์</option>
+                                        <option value="รถตู้">รถตู้</option>
+                                </select>
+
                                   </div>
 
                                 
@@ -89,8 +99,21 @@
                                     <input type="text"  name="colors" class="form-control" placeholder="แดง" />
                                   </div>
                                   <div class="col-4 mb-4">
-                                    <label for="nameBasic" class="form-label"><b>*ความจุ</b></label>
-                                    <input type="text" id="tel" name="detail" class="form-control" placeholder="5 คน" />
+                                    <label for="nameBasic" class="form-label"><b>*ความจุ(คน)</b></label>
+                                    <select class="form-select" id="carSelect" name="detail"
+                                        aria-label="Default select example">
+                                    <option selected>กรุณาเลือกความจุ</option>
+                    
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                </select>
                                   </div>
 
 

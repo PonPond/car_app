@@ -61,10 +61,6 @@ Route::middleware([
     Route::post('/bookings/add', [BookingController::class, 'create'])->name('bookings_add');
     Route::post('/bookings/update/{id}', [BookingController::class, 'update']);
     Route::get('/bookings/delete/{id}', [BookingController::class, 'delete']);
-
     Route::get('/getback', [BookingController::class, 'getback'])->name('index_getback');
-
     Route::get('/profile', [ProfileController::class, 'index'])->name('index_profile');
-
-
 });
